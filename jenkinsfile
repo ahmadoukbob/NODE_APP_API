@@ -2,24 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Go') {
             steps {
-                echo 'Hello World'
+                git branch: 'master', url: 'https://github.com/ahmadoukbob/NODE_APP_API'
             }
         }
         stage('Build') {
             steps {
-                echo 'Dev'
+                bat 'npm install'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing'
+                bat 'npm run test'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Mise en production'
+                bat 'npm run start'
             }
         }
     }
